@@ -32,7 +32,7 @@ func (s *extractState) navigateToSegment(segment string) (err error) {
 	// Check if this is a numeric index (array access)
 	idx, parseErr := strconv.Atoi(segment)
 	if parseErr == nil {
-		err = s.navigateArrayIndex(idx, segment)
+		err = s.navigateArrayIndex(idx)
 		goto end
 	}
 
@@ -43,9 +43,10 @@ end:
 }
 
 // navigateArrayIndex handles array index navigation
-func (s *extractState) navigateArrayIndex(targetIdx int, segment string) (err error) {
+func (s *extractState) navigateArrayIndex(targetIdx int) (err error) {
 	var currentIdx int
-	var kind jsontext.Kind = s.decoder.PeekKind()
+
+	kind := jsontext.Kind(s.decoder.PeekKind())
 
 	// Check for negative index
 	if targetIdx < 0 {
@@ -122,7 +123,8 @@ end:
 func (s *extractState) navigateObjectKey(targetKey string) (err error) {
 	var availableKeys []string
 	var keyToken jsontext.Token
-	var kind jsontext.Kind = s.decoder.PeekKind()
+
+	kind := jsontext.Kind(s.decoder.PeekKind())
 
 	if kind != '{' {
 		err = s.enrichError(
@@ -197,21 +199,6 @@ func (s *extractState) navigateObjectKey(targetKey string) (err error) {
 	)
 end:
 	return err
-}
-
-func (s *extractState) removeKeyQuotes(key string) string {
-	if len(key) <= 1 {
-		goto end
-	}
-	if key[0] != '"' {
-		goto end
-	}
-	if key[len(key)-1] != '"' {
-		goto end
-	}
-	key = key[1 : len(key)-1]
-end:
-	return key
 }
 
 // condensedJSON formats JSON in an easily comprehensible way

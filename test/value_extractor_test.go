@@ -1,4 +1,4 @@
-package jsonxtractr_test
+package test
 
 import (
 	"errors"

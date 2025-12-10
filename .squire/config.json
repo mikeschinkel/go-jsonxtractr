@@ -1,0 +1,22 @@
+{
+  "modules": {
+    "./": {
+      "name": "go-jsonxtractr",
+      "role": [
+        "lib"
+      ]
+    },
+    "./test": {
+      "name": "test",
+      "role": [
+        "test"
+      ]
+    },
+    "./examples/basic_usage": {
+      "name": "basic_usage",
+      "role": [
+        "lib"
+      ]
+    }
+  }
+}

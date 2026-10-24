@@ -1,0 +1,1 @@
+go-dt renamed ErrFileNotExists to ErrFileNotExist in its 'Rename error sentinels for consistency' commit. go-jsonxtractr's Load in read_file.go still names the old sentinel (grep ErrFileNotExists), so building against current go-dt fails with 'undefined: dt.ErrFileNotExists'. Found 2026-10-24 while building go-dt's local-replace dependents.

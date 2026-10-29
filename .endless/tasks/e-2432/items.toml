@@ -86,3 +86,8 @@ statement = "release.yml's generated release notes leave out commits that change
 id = "P17"
 kind = "deliverable"
 statement = "The built example binary bin/basic_usage is no longer tracked, and /bin/ is gitignored, so just examples and just clean leave the tree clean"
+
+[[item]]
+id = "P18"
+kind = "deliverable"
+statement = "The justfile's lint recipe pins golangci-lint v2.15.0, since v2.6.2 cannot read Go 1.27 export data, and every module lints clean with it (test/corpus_test.go's two unused-append findings fixed by logging the counts)"

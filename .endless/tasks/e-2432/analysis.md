@@ -1,0 +1,4 @@
+- Q1 (Mike, 2026-10-29): tag right after this lands with the current Release workflow, rather than waiting for E-2474's generated one: no reason not to get it over with sooner.
+- Dropping the root replace follows ED-1639 (gomion, accepted): publishable modules require siblings by version.
+- go-jsonxtractr's only go-dt use that changed is the sentinel rename (ErrFileNotExists in go-dt v0.5.0, ErrFileNotExist from v0.6.0). v0.6.1 is the latest root tag. Its own exported API does not change, so v0.1.2 is a patch under Go Stability.
+- Makefile conversion and main's uncommitted doterr.go and config.json are folded in under ED-1550 rather than left for another task. Go 1.27 and the generated workflows stay with E-2474, which already owns them; this task precedes it, because the generated Release workflow refuses a module with a replace.

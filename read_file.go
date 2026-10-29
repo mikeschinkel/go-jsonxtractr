@@ -18,7 +18,7 @@ var (
 func Load(path dt.Filepath, data any) (err error) {
 	var raw []byte
 	if path == "" {
-		err = NewErr(dt.ErrFileNotExists)
+		err = NewErr(dt.ErrFileNotExist)
 		goto end
 	}
 

@@ -1,0 +1,195 @@
+# This suite belongs to E-2432 and records what was true when E-2432
+# landed. Edit it only if you ARE E-2432. See .endless/tasks/CLAUDE.md.
+#
+# Every module is checked as CI sees it: against its go.mod's requires,
+# with no go.work (P11).
+schema = 1
+task   = "E-2432"
+
+# ── Fail fast: the native tests (P5). Only test/ has any; the root module
+#    and examples/basic_usage have no test files. ──
+
+[[check]]
+name   = "test module tests"
+runner = "gotest"
+dir    = "test"
+paths  = ["./..."]
+
+# ── P5: every module builds and vets with GOWORK=off ──
+
+[[check]]
+name = "every module builds and vets with GOWORK=off"
+sh   = '''
+export GOWORK=off
+for d in . test examples/basic_usage; do
+    (cd "$d" && go build -o /dev/null ./... && go vet ./...) || { echo "FAILED: $d"; exit 1; }
+done
+'''
+
+# ── P1: the renamed go-dt sentinel ──
+
+[[check]]
+name     = "Load uses dt.ErrFileNotExist"
+sh       = "cat read_file.go"
+contains = "NewErr(dt.ErrFileNotExist)"
+
+[[check]]
+name   = "no Go file names dt.ErrFileNotExists"
+sh     = "git grep -c 'ErrFileNotExists' -- '*.go' || true"
+equals = ""
+
+# ── P2, P3: requires and replaces ──
+
+[[check]]
+name         = "the root go.mod has no replace directive"
+sh           = "cat go.mod"
+not_contains = "replace"
+
+[[check]]
+name     = "the root go.mod requires go-dt v0.6.1"
+sh       = "GOWORK=off go list -m -f '{{.Version}}' github.com/mikeschinkel/go-dt"
+equals   = "v0.6.1"
+
+[[check]]
+name   = "test/go.mod's only replace points at go-jsonxtractr"
+sh     = "grep '^replace' test/go.mod"
+equals = "replace github.com/mikeschinkel/go-jsonxtractr => .."
+
+[[check]]
+name   = "examples/basic_usage/go.mod's only replace points at go-jsonxtractr"
+sh     = "grep '^replace' examples/basic_usage/go.mod"
+equals = "replace github.com/mikeschinkel/go-jsonxtractr => ../.."
+
+# ── P4: every module is tidy as CI sees it ──
+
+[[check]]
+name = "go mod tidy -diff reports nothing in any module"
+sh   = '''
+export GOWORK=off
+for d in . test examples/basic_usage; do
+    (cd "$d" && go mod tidy -diff) || { echo "UNTIDY: $d"; exit 1; }
+done
+'''
+
+# ── P15: Go 1.27, without the jsonv2 experiment ──
+
+[[check]]
+name   = "every go.mod says go 1.27.0"
+sh     = "grep -h '^go ' go.mod test/go.mod examples/basic_usage/go.mod | sort -u"
+equals = "go 1.27.0"
+
+[[check]]
+name   = "both workflows set up Go 1.27"
+sh     = "grep -h 'GO_VERSION:' .github/workflows/test.yml .github/workflows/release.yml | sort -u | tr -d ' '"
+equals = "GO_VERSION:'1.27'"
+
+[[check]]
+name   = "nothing sets GOEXPERIMENT any more"
+sh     = "git grep -l GOEXPERIMENT -- .github justfile || true"
+equals = ""
+
+# ── P6, P7: main's uncommitted work, committed here ──
+
+[[check]]
+name   = "doterr.go matches go-doterr's doterr.go (E-2383, 8d27f42) apart from its package line"
+sh     = '''
+main="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")"
+canon="${TMPDIR:-/tmp}/e2432-canon-doterr.go"
+git -C "$main/../go-doterr" show 8d27f42:doterr.go | grep -v '^package ' > "$canon" || exit 2
+grep -v '^package ' doterr.go | diff "$canon" -
+'''
+equals = ""
+
+[[check]]
+name     = "doterr.go's entry.Error() uses fmt.Fprintf"
+sh       = "cat doterr.go"
+contains = "fmt.Fprintf(&meta,"
+
+[[check]]
+name = ".endless/config.json is committed"
+sh   = "git ls-files --error-unmatch .endless/config.json"
+
+# ── P8, P9, P18: the justfile ──
+
+[[check]]
+name = "the Makefile is gone"
+sh   = "test ! -e Makefile"
+
+[[check]]
+name   = "the justfile offers the Makefile's recipes, plus work"
+sh     = "just --summary | tr ' ' '\\n' | sort | tr '\\n' ' '"
+equals = "build ci clean ensure-valid examples fmt help lint test test-all test-corpus test-unit tidy vet work "
+
+[[check]]
+name = "just work covers every module, plus ../go-dt when it exists, and skips .endless"
+sh   = '''
+set -e
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+git archive HEAD | (mkdir "$tmp/go-jsonxtractr" && tar -x -C "$tmp/go-jsonxtractr")
+mkdir -p "$tmp/go-jsonxtractr/.endless/worktrees/x" && echo 'module x' > "$tmp/go-jsonxtractr/.endless/worktrees/x/go.mod"
+cd "$tmp/go-jsonxtractr"
+just work >/dev/null 2>&1
+go work edit -json | grep DiskPath | tr -d ' ",' | sort | tr '\n' ' '
+echo '|'
+mkdir ../go-dt && printf 'module github.com/mikeschinkel/go-dt\n\ngo 1.25.3\n' > ../go-dt/go.mod
+just work >/dev/null 2>&1
+go work edit -json | grep DiskPath | tr -d ' ",' | sort | tr '\n' ' '
+'''
+equals = '''
+DiskPath:. DiskPath:./examples/basic_usage DiskPath:./test |
+DiskPath:. DiskPath:../go-dt DiskPath:./examples/basic_usage DiskPath:./test '''
+
+[[check]]
+name     = "the justfile pins golangci-lint v2.15.0"
+sh       = "head -1 justfile"
+contains = "golangci-lint@v2.15.0"
+
+[[check]]
+name = "just lint reports 0 issues in every module"
+sh   = '''
+out="$(GOWORK=off just lint 2>&1)" || { echo "$out"; exit 1; }
+test "$(echo "$out" | grep -c '^0 issues\.$')" = 3 || { echo "$out"; exit 1; }
+'''
+
+[[check]]
+name = "just test-all passes"
+sh   = "GOWORK=off just test-all >/dev/null 2>&1 || { GOWORK=off just test-all 2>&1 | tail -30; exit 1; }"
+
+# ── P10: the README ──
+
+[[check]]
+name     = "README.md says local development needs a go.work from just work"
+sh       = "tr '\\n' ' ' < README.md"
+contains = "you need a `go.work` file. Create it with:"
+
+[[check]]
+name     = "README.md names the just work command"
+sh       = "cat README.md"
+contains = "just work"
+
+# ── P17, P19: ignored files ──
+
+[[check]]
+name = "bin/ is untracked and ignored"
+sh   = "test -z \"$(git ls-files bin)\" && git check-ignore -q bin/basic_usage"
+
+[[check]]
+name = "go.work and Endless's per-checkout files are ignored"
+sh   = "git check-ignore -q go.work && git check-ignore -q go.work.sum && git check-ignore -q .endless/worktree.json && git check-ignore -q .endless/worktree.lock && git check-ignore -q .endless/worktrees/x"
+
+# ── P16: release notes leave out .endless/-only commits ──
+
+[[check]]
+name     = "release.yml's git log takes the .endless exclude pathspec"
+sh       = "cat .github/workflows/release.yml"
+contains = "-- . ':(exclude).endless' >> $GITHUB_OUTPUT"
+
+[[check]]
+name   = "git log v0.1.1..HEAD with the pathspec lists no .endless/-only commit"
+sh     = '''
+for c in $(git log v0.1.1..HEAD --format=%H -- . ':(exclude).endless'); do
+    git show --format= --name-only "$c" | grep -qv '^\.endless/' || echo "$c"
+done
+'''
+equals = ""

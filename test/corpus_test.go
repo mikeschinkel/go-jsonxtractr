@@ -119,6 +119,8 @@ func testCorpus(t *testing.T, fuzzFuncName string, testFunc func(string, string)
 		}
 	}
 
+	t.Logf("%s corpus: %d succeeded, %d returned errors", fuzzFuncName, len(successes), len(parseErrors))
+
 	if len(infiniteLoops) > 0 {
 		t.Fatalf("Found %d infinite loop(s) in %s", len(infiniteLoops), fuzzFuncName)
 	}

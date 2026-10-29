@@ -1,0 +1,12 @@
+{
+  "name": "go-jsonxtractr",
+  "label": "",
+  "description": "",
+  "language": "go",
+  "status": "active",
+  "dependencies": [],
+  "documents": {
+    "rules": []
+  },
+  "identity": "873ea5786078a6aba913a8abab6f484e5ea0e559"
+}

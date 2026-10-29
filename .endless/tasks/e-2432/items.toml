@@ -71,3 +71,8 @@ statement = "Does not raise any go directive to Go 1.27 or regenerate the workfl
 id = "P14"
 kind = "exclusion"
 statement = "Does not create or push a tag; the user runs the Release workflow"
+
+[[item]]
+id = "P15"
+kind = "deliverable"
+statement = "Every go.mod's go directive is 1.27.0 and the Test and Release workflows set up Go 1.27, so the json/v2 API type-checks; GOEXPERIMENT=jsonv2 is dropped as obsolete under 1.27 (Mike chose this over pinning go1.25.3, overriding P13)"

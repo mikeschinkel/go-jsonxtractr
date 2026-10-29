@@ -130,11 +130,11 @@ git archive HEAD | (mkdir "$tmp/go-jsonxtractr" && tar -x -C "$tmp/go-jsonxtract
 mkdir -p "$tmp/go-jsonxtractr/.endless/worktrees/x" && echo 'module x' > "$tmp/go-jsonxtractr/.endless/worktrees/x/go.mod"
 cd "$tmp/go-jsonxtractr"
 just work >/dev/null 2>&1
-go work edit -json | grep DiskPath | tr -d ' ",' | sort | tr '\n' ' '
+go work edit -json | grep DiskPath | tr -d ' \t",' | sort | tr '\n' ' '
 echo '|'
 mkdir ../go-dt && printf 'module github.com/mikeschinkel/go-dt\n\ngo 1.25.3\n' > ../go-dt/go.mod
 just work >/dev/null 2>&1
-go work edit -json | grep DiskPath | tr -d ' ",' | sort | tr '\n' ' '
+go work edit -json | grep DiskPath | tr -d ' \t",' | sort | tr '\n' ' '
 '''
 equals = '''
 DiskPath:. DiskPath:./examples/basic_usage DiskPath:./test |

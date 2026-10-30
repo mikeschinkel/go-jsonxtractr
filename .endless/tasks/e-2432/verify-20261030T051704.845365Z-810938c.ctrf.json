@@ -1,0 +1,724 @@
+{
+  "reportFormat": "CTRF",
+  "specVersion": "0.2.0",
+  "results": {
+    "tool": {
+      "name": "endless"
+    },
+    "summary": {
+      "tests": 71,
+      "passed": 71,
+      "failed": 0,
+      "skipped": 0,
+      "pending": 0,
+      "other": 0,
+      "start": 1793337416605,
+      "stop": 1793337424845
+    },
+    "tests": [
+      {
+        "name": "TestFuzzCorpus",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/simple_object_key",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/nested_object_key",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/array_index",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/array_of_objects_then_key",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/array_index_out_of_range",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/missing_object_key",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/expects_array_but_found_object",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/expects_object_but_found_array",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/empty_segment_in_path",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/negative_index",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/empty_body",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue/empty_SQL_parameter_name",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_UnmarshalErrorIsWrapped",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_TypeTransparence",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_WithReader/nested_object",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_WithReader/nested_number",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_WithReader/array_element",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_WithReader",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestStreamingExtractValue_ErrorContext",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromBytes_MultipleSelectors/multiple_valid_selectors",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromBytes_MultipleSelectors/mixed_valid_and_invalid_selectors",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromBytes_MultipleSelectors/all_invalid_selectors",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromBytes_MultipleSelectors",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromReader_MultipleSelectors",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "TestExtractValuesFromBytes_ErrorCollection",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#0",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#1",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#2",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#3",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#4",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#5",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#6",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#7",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#8",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#9",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader/seed#10",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValuesFromReader",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader/seed#0",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader/seed#1",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader/seed#2",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader/seed#3",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader/seed#4",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "FuzzExtractValueFromReader",
+        "status": "passed",
+        "duration": 0,
+        "suite": [
+          "test"
+        ],
+        "labels": {
+          "check": "test module tests"
+        }
+      },
+      {
+        "name": "every module builds and vets with GOWORK=off",
+        "status": "passed",
+        "duration": 924,
+        "labels": {
+          "check": "every module builds and vets with GOWORK=off"
+        }
+      },
+      {
+        "name": "Load uses dt.ErrFileNotExist",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "Load uses dt.ErrFileNotExist"
+        }
+      },
+      {
+        "name": "no Go file names dt.ErrFileNotExists",
+        "status": "passed",
+        "duration": 9,
+        "labels": {
+          "check": "no Go file names dt.ErrFileNotExists"
+        }
+      },
+      {
+        "name": "the root go.mod has no replace directive",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "the root go.mod has no replace directive"
+        }
+      },
+      {
+        "name": "the root go.mod requires go-dt v0.6.1",
+        "status": "passed",
+        "duration": 8,
+        "labels": {
+          "check": "the root go.mod requires go-dt v0.6.1"
+        }
+      },
+      {
+        "name": "test/go.mod's only replace points at go-jsonxtractr",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "test/go.mod's only replace points at go-jsonxtractr"
+        }
+      },
+      {
+        "name": "examples/basic_usage/go.mod's only replace points at go-jsonxtractr",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "examples/basic_usage/go.mod's only replace points at go-jsonxtractr"
+        }
+      },
+      {
+        "name": "go mod tidy -diff reports nothing in any module",
+        "status": "passed",
+        "duration": 69,
+        "labels": {
+          "check": "go mod tidy -diff reports nothing in any module"
+        }
+      },
+      {
+        "name": "every go.mod says go 1.27.0",
+        "status": "passed",
+        "duration": 6,
+        "labels": {
+          "check": "every go.mod says go 1.27.0"
+        }
+      },
+      {
+        "name": "both workflows set up Go 1.27",
+        "status": "passed",
+        "duration": 6,
+        "labels": {
+          "check": "both workflows set up Go 1.27"
+        }
+      },
+      {
+        "name": "nothing sets GOEXPERIMENT any more",
+        "status": "passed",
+        "duration": 8,
+        "labels": {
+          "check": "nothing sets GOEXPERIMENT any more"
+        }
+      },
+      {
+        "name": "doterr.go matches go-doterr's doterr.go (E-2383, 8d27f42) apart from its package line",
+        "status": "passed",
+        "duration": 16,
+        "labels": {
+          "check": "doterr.go matches go-doterr's doterr.go (E-2383, 8d27f42) apart from its package line"
+        }
+      },
+      {
+        "name": "doterr.go's entry.Error() uses fmt.Fprintf",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "doterr.go's entry.Error() uses fmt.Fprintf"
+        }
+      },
+      {
+        "name": ".endless/config.json is committed",
+        "status": "passed",
+        "duration": 6,
+        "labels": {
+          "check": ".endless/config.json is committed"
+        }
+      },
+      {
+        "name": "the Makefile is gone",
+        "status": "passed",
+        "duration": 2,
+        "labels": {
+          "check": "the Makefile is gone"
+        }
+      },
+      {
+        "name": "the justfile offers the Makefile's recipes, plus work",
+        "status": "passed",
+        "duration": 10,
+        "labels": {
+          "check": "the justfile offers the Makefile's recipes, plus work"
+        }
+      },
+      {
+        "name": "just work covers every module, plus ../go-dt when it exists, and skips .endless",
+        "status": "passed",
+        "duration": 310,
+        "labels": {
+          "check": "just work covers every module, plus ../go-dt when it exists, and skips .endless"
+        }
+      },
+      {
+        "name": "the justfile pins golangci-lint v2.15.0",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "the justfile pins golangci-lint v2.15.0"
+        }
+      },
+      {
+        "name": "just lint reports 0 issues in every module",
+        "status": "passed",
+        "duration": 5817,
+        "labels": {
+          "check": "just lint reports 0 issues in every module"
+        }
+      },
+      {
+        "name": "just test-all passes",
+        "status": "passed",
+        "duration": 907,
+        "labels": {
+          "check": "just test-all passes"
+        }
+      },
+      {
+        "name": "README.md says local development needs a go.work from just work",
+        "status": "passed",
+        "duration": 5,
+        "labels": {
+          "check": "README.md says local development needs a go.work from just work"
+        }
+      },
+      {
+        "name": "README.md names the just work command",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "README.md names the just work command"
+        }
+      },
+      {
+        "name": "bin/ is untracked and ignored",
+        "status": "passed",
+        "duration": 13,
+        "labels": {
+          "check": "bin/ is untracked and ignored"
+        }
+      },
+      {
+        "name": "go.work and Endless's per-checkout files are ignored",
+        "status": "passed",
+        "duration": 23,
+        "labels": {
+          "check": "go.work and Endless's per-checkout files are ignored"
+        }
+      },
+      {
+        "name": "release.yml's git log takes the .endless exclude pathspec",
+        "status": "passed",
+        "duration": 4,
+        "labels": {
+          "check": "release.yml's git log takes the .endless exclude pathspec"
+        }
+      },
+      {
+        "name": "git log v0.1.1..HEAD with the pathspec lists no .endless/-only commit",
+        "status": "passed",
+        "duration": 43,
+        "labels": {
+          "check": "git log v0.1.1..HEAD with the pathspec lists no .endless/-only commit"
+        }
+      }
+    ]
+  }
+}
